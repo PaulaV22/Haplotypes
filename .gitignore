@@ -1,0 +1,12 @@
+# Don't track content of these folders
+BlastDb/
+BlastResult/
+Bola/
+DbAmbigua/
+FinalResult/
+Nuevadb/
+venv/
+
+
+#files
+prueba.fa
