@@ -15,12 +15,11 @@ class GlobalBlast(SB.SimpleBlast):
         SB.SimpleBlast.__init__(self, dbPath, newDb, outputFile, outputFormat,outputPath)
 
     def align(self, queryDB):
-        #queryDB es BoLa
+        #queryDB es BoLa o la carpeta que contenga todas las secuencias documentadas originales
         # por cada secuencia de la base de datos comparar con la base de datos BlastDB
         for bases, dirs, files in os.walk(queryDB):
-            #print (bases)
             for file in files:
-                #print (file)
                 queryName = file[:-3]
                 sequence = bases + '/' + file
+                print (sequence + " " + queryName)
                 SB.SimpleBlast.align(self,sequence,queryName)

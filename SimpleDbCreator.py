@@ -50,10 +50,14 @@ class SimpleDbCreator:
         if outputName in os.listdir(directory):
             dbpath1 = self.projectPath + '/' + directory + '/' + outputName
             dbpath2 = self.projectPath + '/' + directory + '/' + self.outputFile
-            # print 'secuencias.fasta esta en ' + dbpath1
+            #print 'secuencias.fasta esta en ' + dbpath1
             # ver este comando que es el que tiene problemas
+            print (dbpath1)
+            print (dbpath2)
             command = 'powershell.exe makeblastdb -in ' + dbpath1 + ' -out ' + dbpath2 + ' -parse_seqids -dbtype nucl'
             subprocess.Popen(command)
+            print (subprocess.check_output(command))
+
 
     def setFilesPath (self, filesPath):
         self.filesPath = filesPath
@@ -68,8 +72,8 @@ class SimpleDbCreator:
         self.createFolder(self.newDb)
         # recorro los archivos y guardo las secuencias en un arreglo. Para cada directorio de las secuencias documentadas
         # creo el archivo secuencias.fasta para poder crear la base de datos en cada subdirectorio
-        print ("busca en los archivos " +self.filesPath)
-        print (self.newDb)
+        #print ("busca en los archivos " +self.filesPath)
+        ##print (self.newDb)
         for bases, dirs, files in os.walk(self.filesPath):
             print (bases)
             subdirectory = bases
@@ -77,7 +81,8 @@ class SimpleDbCreator:
             newSubFolder = self.newDb + "/" + bases
             # creo una subcarpeta para el subdirectorio correspondiente
             self.createFolder(newSubFolder)
-            # print 'subfolder es ' + newSubFolder
+
+            #print 'subfolder es ' + newSubFolder
             for file in os.listdir(subdirectory):
                 filePath = bases + '/' + file
                 # si es un archivo fasta y no un directorio  --> ver, creo que hay una manera mas elegante de preguntar si es un archivo o directorio

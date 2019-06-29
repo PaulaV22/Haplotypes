@@ -26,12 +26,13 @@ class SimpleBlast:
 
     def align(self, query, queryName):
         self.createFolder(self.outputPath)
-        #print ("query es " + query)
+        print ("query es " + query)
         i=0
         for bases, dirs, files in os.walk(self.dbPath):
             for file in files:
                 # fileName es "secuencias.fasta" o salida.fasta
                 fileName = self.dbName + "." + self.outputFormat
+                print file
                 if file[-5:] == self.outputFormat:
                     self.dbName = file[:-6]
                     # ahora tengo que armar un archivo de salida para cada una de las bases de datos
@@ -39,7 +40,8 @@ class SimpleBlast:
                     output = self.projectPath + '/' + self.outputPath+ '/'+queryName+str(i)
                     #print(output + "   " + dbPath)
                     # ya se tiene la base de datos creada. Crear el comando para buscar la secuencia query en la bd y generar salida
+                    print output
                     blastnCline = NcbiblastnCommandline(query=query, db=dbPath, evalue=0.001, outfmt=5, out=output)
-                    #print (blastnCline)
+                    print blastnCline
                     stdout, stderr = blastnCline()
                     i=i+1
