@@ -10,9 +10,9 @@ import os
 #       4: OUTPUTFORMAT ES EL FORMATO DEL ARCHIVO DE SALIDA QUE TIENE TODAS LAS NUEVAS SECUENCIAS CREADAS (FASTA)
 
 class GlobalBlast(SB.SimpleBlast):
-    def __init__(self, dbPath, newDb, outputFile, outputFormat, outputPath):
-        # recibe (BlastDb, secuencias, salida, fasta
-        SB.SimpleBlast.__init__(self, dbPath, newDb, outputFile, outputFormat,outputPath)
+    def __init__(self, dbPath, newDb, outputFile, outputFormat, outputPath, dbName):
+        # recibe (BlastDb, secuencias, salida, fasta, BoLa)
+        SB.SimpleBlast.__init__(self, dbPath, newDb, outputFile, outputFormat,outputPath, dbName)
 
     def align(self, queryDB):
         #queryDB es BoLa o la carpeta que contenga todas las secuencias documentadas originales
@@ -21,5 +21,4 @@ class GlobalBlast(SB.SimpleBlast):
             for file in files:
                 queryName = file[:-3]
                 sequence = bases + '/' + file
-                print (sequence + " " + queryName)
                 SB.SimpleBlast.align(self,sequence,queryName)

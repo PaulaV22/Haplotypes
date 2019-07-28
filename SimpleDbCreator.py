@@ -45,15 +45,13 @@ class SimpleDbCreator:
     def makeBlastDb(self, directory):
         # formo "secuencias.fasta"
         outputName = self.outputFile + "." + self.outputFormat
-        print outputName
-        print directory
         if outputName in os.listdir(directory):
             dbpath1 = self.projectPath + '/' + directory + '/' + outputName
             dbpath2 = self.projectPath + '/' + directory + '/' + self.outputFile
             #print 'secuencias.fasta esta en ' + dbpath1
             # ver este comando que es el que tiene problemas
-            print (dbpath1)
-            print (dbpath2)
+            #print (dbpath1)
+            #print (dbpath2)
             command = 'powershell.exe makeblastdb -in ' + dbpath1 + ' -out ' + dbpath2 + ' -parse_seqids -dbtype nucl'
             subprocess.Popen(command)
             print (subprocess.check_output(command))
@@ -75,7 +73,6 @@ class SimpleDbCreator:
         #print ("busca en los archivos " +self.filesPath)
         ##print (self.newDb)
         for bases, dirs, files in os.walk(self.filesPath):
-            print (bases)
             subdirectory = bases
             sequences = []
             newSubFolder = self.newDb + "/" + bases

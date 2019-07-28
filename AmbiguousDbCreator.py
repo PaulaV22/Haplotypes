@@ -1,4 +1,5 @@
 import SimpleDbCreator as SC
+import SimpleBlast as SB
 from Bio.Seq import Seq
 from Bio.Alphabet import IUPAC
 from Bio.SeqRecord import SeqRecord
@@ -19,13 +20,14 @@ from Bio import SearchIO
 
 class AmbiguousDbCreator:
 
-    def __init__(self, filesPath, intermediateDb, outputFile, outputFormat, newDb):
-        # recibe (BlastResult, Nuevadb, salida, fasta, "DbAmbigua")
-        self.filesPath = filesPath
+    def __init__(self, filesPath, intermediateDb, outputFile, outputFormat, newDb, dbName):
+        # recibe (BlastResult, Nuevadb, salida, fasta, "DbAmbigua", "BoLa")
+        self.filesPath = filesPath +"/" + dbName
         self.intermediateDb = intermediateDb
         self.outputFile = outputFile
         self.outputFormat =outputFormat
         self.newDb = newDb
+        self.dbName= dbName
         self.projectPath = os.path.dirname(os.path.abspath(__file__))
         self.sc = SC.SimpleDbCreator(intermediateDb, newDb, outputFile, outputFormat)
         self.ambiguousPos= dict()
@@ -50,6 +52,9 @@ class AmbiguousDbCreator:
             if (q == "A" and h == "C") or (q == "C" and h == "A"):
                 self.ambiguousPos[str(i)+"_"+queryid+hitid] = "M"
                 return "M"
+            if (q == "T" and h == "G") or (q == "G" and h == "T"):
+                self.ambiguousPos[str(i)+"_"+queryid+hitid] = "K"
+                return "K"
             # faltan los casos de los guiones
             else:
                 return "N"
@@ -78,7 +83,6 @@ class AmbiguousDbCreator:
     def makeDb(self):
         #self.sc.createFolder(self.intermediateDb)
         for bases, dirs, files in os.walk(self.filesPath):
-            print("BASES ES " + bases)
             #SI NO CREA BIEN LA BBDD AMBIGUA VER DE DESCOMENTAR ESTO QUE CREABA UNA CARPETA DEMAS SIN USO PARA LA PRUEBA
             # newFolderPath = self.newDb + "/" + bases
             #self.sc.createFolder(newFolderPath)
@@ -87,18 +91,36 @@ class AmbiguousDbCreator:
                # print(file)
                 # por cada archivo de salida que se haya generado en la busqueda,
                 # generar una nueva secuencia fasta por cada uno de los resultados obtenidos
-                outputName = self.projectPath + "/" + bases + "/" + file
+                outputName = self.projectPath + "/"  + bases + "/" + file
                 blast_qresult = SearchIO.read(outputName, "blast-xml")
                 sequences = self.getSequencesFromBlastResult(blast_qresult)
-                sequencePath = self.newDb + "/" + file
+                sequencePath = self.newDb + "/" + self.dbName +"/" + file
                 self.sc.createFolder(sequencePath)
                 self.sc.saveSequencesInFile(sequencePath, sequences, file)
                 db = sequencePath
                 self.sc.setOutputFile(file)
-                self.sc.makeBlastDb(db)
+               #para evitar que se genere mal alguna base de datos y el error aparezca en etapas posteriores
+                while(self.testFails(db,outputName, file)):
+                    self.sc.makeBlastDb(db)
+
 
     def getAmbiguousPos(self):
         return self.ambiguousPos
 
     def printAmbiguousPos(self):
         print(self.ambiguousPos)
+
+
+    def testFails(self,db, filePath, file):
+        print("A TESTEAR DB "+db)
+        if (len([f for f in os.listdir(db)]) <7):
+            return True
+        outputPath = "Test"+"/"+self.dbName+"/"+file
+        sb = SB.SimpleBlast(db, "salida", "salida", "fasta", outputPath)
+        queryName = "queryTestBola.fa"
+        queryPath = self.projectPath + "/" + queryName
+        try:
+            sb.align(queryPath, queryName)
+        except:
+            return True
+        return False

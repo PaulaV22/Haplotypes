@@ -8,16 +8,19 @@ from Bio.Blast.Applications import NcbiblastnCommandline
 #       2: DBNAME ES EL NOMBRE DEL ARCHIVO DE SECUENCIAS RESUMIDO QUE SE GENERA CON SIMPLEDBCREATOR
 #       3: OUTPUTNAME ES EL NOMBRE DEL ARCHIVO DE SALIDA QUE GENERARA EL COMANDO NCBIBLASTCOMMANDLINE (RESULTADOS)
 #       4: OUTPUTFORMAT ES FASTA (FORMATO DEL ARCHIVO DE SECUENCIAS RESUMIDO)
-
+#       5: ORIGINALDBNAME TIENE EL NOMBRE DE LA BASE DE DATOS DE SECUENCIAS CON LA QUE SE TRABAJA
 class SimpleBlast:
-    def __init__(self, dbPath, dbName, outputName, outputFormat, outputPath):
-        self.dbPath = dbPath
+    def __init__(self, dbPath, dbName, outputName, outputFormat, outputPath, originalDbName=None):
         self.dbName = dbName
         self.outputName = outputName
         self.outputFormat = outputFormat
-        self.outputPath = outputPath
+        if originalDbName is None:
+            self.outputPath = outputPath
+            self.dbPath = dbPath
+        else:
+            self.outputPath = outputPath+"/"+originalDbName
+            self.dbPath = dbPath +"/"+originalDbName
         self.projectPath = os.path.dirname(os.path.abspath(__file__))
-
 
     def createFolder(self, newFolder):
         if not os.path.exists(newFolder):
@@ -27,6 +30,7 @@ class SimpleBlast:
     def align(self, query, queryName):
         self.createFolder(self.outputPath)
         print ("query es " + query)
+        print("queryName es "+queryName)
         i=0
         for bases, dirs, files in os.walk(self.dbPath):
             for file in files:
@@ -37,7 +41,7 @@ class SimpleBlast:
                     self.dbName = file[:-6]
                     # ahora tengo que armar un archivo de salida para cada una de las bases de datos
                     dbPath = self.projectPath + '/' + bases + '/' + self.dbName
-                    output = self.projectPath + '/' + self.outputPath+ '/'+queryName+str(i)
+                    output = self.projectPath + '/' + self.outputPath+ '/'+queryName+"_"+str(i)
                     #print(output + "   " + dbPath)
                     # ya se tiene la base de datos creada. Crear el comando para buscar la secuencia query en la bd y generar salida
                     print output
