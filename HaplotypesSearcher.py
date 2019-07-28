@@ -25,9 +25,9 @@ class HaplotypesSearcher:
         ####crear la bd con los archivos originales de BoLa####
         self.simpleDbCreator.makeDb()
         ####alinear todas las secuencias de BoLa entre si generando un archivo de salida por cada alineacion (n x n)####
-        #self.globalBlast.align(self.db)
+        self.globalBlast.align(self.db)
         ####armar la base de datos con las posibles combinaciones (Nuevadb)####
-        #self.ambiguousDbCreator.makeDb()
+        self.ambiguousDbCreator.makeDb()
         ####self.ambiguousDbCreator.printAmbiguousPos()
 
         ######################### USO DE LA BASE DE DATOS CON UNA QUERY ########################################
@@ -53,8 +53,8 @@ class HaplotypesSearcher:
         self.dbAdmin.deleteSequence(self.projectPath,db,sequence)
 
 searcher = HaplotypesSearcher()
-searcher.searchHaplotypes()
-#searcher.deleteSequence("BoLa", "DRB3_0101.fa")
+#searcher.searchHaplotypes()
+searcher.deleteSequence("BoLa", "DRB3_0201.fa")
 #searcher.probarGlobalComparator()
 #searcher.probarSimpleDbCreator()
 #searcher.probarAmbiguousDbCreator()
