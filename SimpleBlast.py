@@ -1,6 +1,6 @@
 import os
 from Bio.Blast.Applications import NcbiblastnCommandline
-
+import shutil
 
 # ESTA CLASE HACE LA BUSQUEDA EN LA BASE DE DATOS PARA UNA DETERMINADA SECUENCIA GENERANDO UNA SALIDA BLASTQRESULT.
 # PARA ESO RECIBE:
@@ -28,6 +28,7 @@ class SimpleBlast:
 
 
     def align(self, query, queryName):
+
         self.createFolder(self.outputPath)
         print ("query es " + query)
         print("queryName es "+queryName)

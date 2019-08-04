@@ -2,10 +2,15 @@ import os
 from Bio import SeqIO
 from Bio import SearchIO
 import shutil
+from shutil import copyfile
+import subprocess
+import SimpleBlast as SB
 
 class DbAdmin:
 
     def deleteSequence(self, projectPath, db, file):
+        self.projectPath = projectPath
+        self.db = db
         self.deleteFromFolder(projectPath,db,file)
         self.deleteFromDb(projectPath,db,file, "BlastDb")
         self.deleteFromAlignResult(projectPath,db,file,"BlastResult")
@@ -39,7 +44,10 @@ class DbAdmin:
                 filePath = bases + '/' + f
                 # si es un archivo fasta y no un directorio  --> ver, creo que hay una manera mas elegante de preguntar si es un archivo o directorio
                 if self.contains(filePath, file[:-3]):
-                    shutil.rmtree(filePath)
+                    if os.path.isfile(filePath):
+                        os.remove(filePath)
+                    else:
+                        shutil.rmtree(filePath)
                 else:
                     if os.path.isfile(filePath) and self.contains(f,"fasta"):
                         with open(filePath) as originalFasta, open(bases+ "/output.fasta", 'w') as correctedFasta:
@@ -51,8 +59,45 @@ class DbAdmin:
                             os.rename(bases+"/output.fasta", filePath)
                         except Exception as e:
                             print(e)
+                        folder = os.path.dirname(filePath)
+                        self.removeOtherFilesInFolder(folder)
+                        filename= os.path.splitext(f)[0]
+                        output = folder+"/"+filename
+                        dbName = os.path.basename(folder)
+                        while (self.testFails(folder, dbName, filename)):
+                            self.generateBlastDb(filePath, output)
 
 
+    def removeOtherFilesInFolder(self,folder):
+        for file in os.listdir(folder):
+            if not self.contains(file,".fasta"):
+                os.remove(folder+"/"+file)
+
+    def generateBlastDb(self, filePath, output):
+        command = 'powershell.exe makeblastdb -in ' + filePath + ' -out ' + output + ' -parse_seqids -dbtype nucl'
+        subprocess.Popen(command)
+        print (subprocess.check_output(command))
+
+    def testFails(self,db):
+        print("A TESTEAR DB "+db)
+        if (len([f for f in os.listdir(db)]) <7):
+            return True
+        return False
+
+    def testFails(self,db, dbName,file):
+        print("A TESTEAR DB "+db)
+        if (len([f for f in os.listdir(db)]) <7):
+            return True
+        outputPath = self.projectPath+"/Test"+"/"+dbName+"/"+file
+        sb = SB.SimpleBlast(dbName, "salida", "salida", "fasta", "Test", self.db)
+        queryName = "queryTestBola.fa"
+        queryPath = self.projectPath + "/" + queryName
+        try:
+            sb.align(queryPath, queryName)
+        except Exception as e:
+            print(e)
+            return True
+        return False
 
     # Borrarlo de la base de datos ambigua BlastResult
     def deleteFromAlignResult(self, projectPath, db, file, alignResult):
@@ -79,3 +124,19 @@ class DbAdmin:
                             i = i + 1
                     os.remove(filePath)
                     SearchIO.write(result, filePath, 'blast-xml')
+
+    def addSequence(self, source, projectPath, db, subPath=None, ):
+        file = os.path.basename(source)
+        self.addToFolder(source, projectPath,db,file, subPath)
+
+
+    def addToFolder(self, source,projectPath, db,file,subpath):
+        if  not subpath is None:
+            fullPath = projectPath+"/"+db+"/"+subpath+"/"+file
+        else:
+            fullPath = projectPath+"/"+db+"/"+file
+        copyfile(source, fullPath)
+
+   # def addToDatabase(self, source,projectPath, db, file,subpath, dbType):
+
+

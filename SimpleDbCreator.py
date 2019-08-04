@@ -67,6 +67,11 @@ class SimpleDbCreator:
         self.outputFormat= format
 
     def makeDb(self):
+        dbPath = self.projectPath+'/'+self.newDb
+        try:
+            os.remove(dbPath)
+        except:
+            print("La carpeta no existe")
         self.createFolder(self.newDb)
         # recorro los archivos y guardo las secuencias en un arreglo. Para cada directorio de las secuencias documentadas
         # creo el archivo secuencias.fasta para poder crear la base de datos en cada subdirectorio

@@ -100,7 +100,7 @@ class AmbiguousDbCreator:
                 db = sequencePath
                 self.sc.setOutputFile(file)
                #para evitar que se genere mal alguna base de datos y el error aparezca en etapas posteriores
-                while(self.testFails(db,outputName, file)):
+                while(self.testFails(db, file)):
                     self.sc.makeBlastDb(db)
 
 
@@ -111,7 +111,7 @@ class AmbiguousDbCreator:
         print(self.ambiguousPos)
 
 
-    def testFails(self,db, filePath, file):
+    def testFails(self,db, file):
         print("A TESTEAR DB "+db)
         if (len([f for f in os.listdir(db)]) <7):
             return True
