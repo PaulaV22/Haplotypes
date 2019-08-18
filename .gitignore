@@ -9,6 +9,8 @@ venv/
 Prueba2/
 Prueba2 - copia/
 BoLa - copia/
+Categories/
+
 
 #files
 prueba.fa
@@ -19,3 +21,8 @@ queryTestBolaModifCorta.fa
 queryTestBolaModifLarga.fa
 output.fasta
 DERB34501_DRB32705.fa
+Muestra1.fa
+Muestra2.fa
+Muestra5.fa
+Muestra9.fa
+person.json

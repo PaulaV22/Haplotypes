@@ -25,13 +25,14 @@ class SimpleBlast:
     def createFolder(self, newFolder):
         if not os.path.exists(newFolder):
             os.makedirs(newFolder)
+        else:
+            shutil.rmtree(newFolder)
+            os.makedirs(newFolder)
+
 
 
     def align(self, query, queryName):
-
         self.createFolder(self.outputPath)
-        print ("query es " + query)
-        print("queryName es "+queryName)
         i=0
         for bases, dirs, files in os.walk(self.dbPath):
             for file in files:

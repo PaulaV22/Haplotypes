@@ -74,7 +74,7 @@ class AmbiguousDbCreator:
                 nitrogenBase = self.getNitrogenBase(q, h, i, query.id, hit.id)
                 append = Seq(nitrogenBase, IUPAC.ambiguous_dna)
                 newSeq = newSeq + append
-            newSeqId = query.id + "_" + hit.id
+            newSeqId = query.id + "/" + hit.id
             newSeqDescription = query.description + "_" + hit.description
             record = SeqRecord(newSeq, id=newSeqId, description=newSeqDescription)
             sequences.append(record)
