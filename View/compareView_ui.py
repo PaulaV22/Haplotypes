@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'compareView.ui'
 #
-# Created: Sat Aug 24 21:31:57 2019
+# Created: Mon Aug 26 22:45:41 2019
 #      by: pyside-uic 0.2.15 running on PySide 1.2.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -12,7 +12,7 @@ from PySide import QtCore, QtGui
 class Ui_mainWindow(object):
     def setupUi(self, mainWindow):
         mainWindow.setObjectName("mainWindow")
-        mainWindow.resize(842, 550)
+        mainWindow.resize(1274, 743)
         self.centralwidget = QtGui.QWidget(mainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.labelDatabase = QtGui.QLabel(self.centralwidget)
@@ -25,26 +25,33 @@ class Ui_mainWindow(object):
         self.labelFiles.setGeometry(QtCore.QRect(30, 60, 70, 21))
         self.labelFiles.setObjectName("labelFiles")
         self.sequenceInput = QtGui.QPlainTextEdit(self.centralwidget)
-        self.sequenceInput.setGeometry(QtCore.QRect(440, 60, 381, 161))
+        self.sequenceInput.setGeometry(QtCore.QRect(630, 70, 591, 161))
         self.sequenceInput.setObjectName("sequenceInput")
         self.label = QtGui.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(480, 20, 251, 21))
+        self.label.setGeometry(QtCore.QRect(640, 30, 251, 21))
         self.label.setObjectName("label")
         self.buttonCompare = QtGui.QPushButton(self.centralwidget)
-        self.buttonCompare.setGeometry(QtCore.QRect(570, 230, 112, 34))
+        self.buttonCompare.setGeometry(QtCore.QRect(880, 240, 112, 34))
         self.buttonCompare.setObjectName("buttonCompare")
         self.tableResults = QtGui.QTableView(self.centralwidget)
-        self.tableResults.setGeometry(QtCore.QRect(440, 280, 381, 192))
+        self.tableResults.setGeometry(QtCore.QRect(630, 290, 591, 391))
         self.tableResults.setObjectName("tableResults")
         self.buttonDownload = QtGui.QToolButton(self.centralwidget)
-        self.buttonDownload.setGeometry(QtCore.QRect(390, 440, 32, 27))
+        self.buttonDownload.setGeometry(QtCore.QRect(1240, 650, 32, 27))
         self.buttonDownload.setObjectName("buttonDownload")
         self.dbFilesTree = QtGui.QTreeView(self.centralwidget)
-        self.dbFilesTree.setGeometry(QtCore.QRect(30, 90, 341, 381))
+        self.dbFilesTree.setGeometry(QtCore.QRect(30, 90, 541, 591))
         self.dbFilesTree.setObjectName("dbFilesTree")
+        self.resultLenghtSpin = QtGui.QSpinBox(self.centralwidget)
+        self.resultLenghtSpin.setGeometry(QtCore.QRect(900, 30, 54, 27))
+        self.resultLenghtSpin.setObjectName("resultLenghtSpin")
+        self.progressBar = QtGui.QProgressBar(self.centralwidget)
+        self.progressBar.setGeometry(QtCore.QRect(640, 250, 631, 23))
+        self.progressBar.setProperty("value", 24)
+        self.progressBar.setObjectName("progressBar")
         mainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(mainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 842, 31))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1274, 31))
         self.menubar.setMouseTracking(True)
         self.menubar.setObjectName("menubar")
         mainWindow.setMenuBar(self.menubar)
