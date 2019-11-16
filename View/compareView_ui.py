@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'compareView.ui'
 #
-# Created: Thu Nov 07 08:04:35 2019
+# Created: Sun Nov 10 17:18:14 2019
 #      by: pyside-uic 0.2.15 running on PySide 1.2.4
 #
 # WARNING! All changes made in this file will be lost!
@@ -171,7 +171,7 @@ class Ui_mainWindow(object):
         self.seqContent.setGeometry(QtCore.QRect(70, 410, 921, 221))
         self.seqContent.setObjectName("seqContent")
         self.labelSelectedSeq = QtGui.QLabel(self.widEditDB)
-        self.labelSelectedSeq.setGeometry(QtCore.QRect(70, 170, 391, 21))
+        self.labelSelectedSeq.setGeometry(QtCore.QRect(70, 170, 911, 21))
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -183,7 +183,7 @@ class Ui_mainWindow(object):
         self.newSeqName.setGeometry(QtCore.QRect(70, 360, 241, 27))
         self.newSeqName.setObjectName("newSeqName")
         self.labelSelectedDir = QtGui.QLabel(self.widEditDB)
-        self.labelSelectedDir.setGeometry(QtCore.QRect(70, 320, 391, 21))
+        self.labelSelectedDir.setGeometry(QtCore.QRect(70, 320, 881, 21))
         self.labelSelectedDir.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
         self.labelSelectedDir.setObjectName("labelSelectedDir")
         mainWindow.setCentralWidget(self.centralwidget)
