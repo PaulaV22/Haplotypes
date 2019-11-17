@@ -7,42 +7,41 @@ from View.compareView_ui1 import Ui_mainWindow
 import os
 import shutil
 from Model.HaplotypesSearcher import HaplotypesSearcher as HaplotypeSearcher
-from Controller2 import Controller
 
-class AddController(Controller.Controller):
+class AddController:
 
-    def __init__(self,window):
-        Controller.Controller.__init__(self,window)
+    def __init__(self, widAddDB):
+        self.widget = widAddDB
         self.threadPool = QThreadPool()
 
-    def configureView(self):
+    def configureAddView(self):
         self.fileName=None
-        self.window.labelProcess.hide()
-        self.window.labelImport.hide()
-        self.window.buttonSelect.clicked.connect(self.importFiles)
-        self.window.buttonImport.clicked.connect(self.copyFiles)
-        self.window.buttonImport.setEnabled(False)
-        self.window.inputDbName.textChanged.connect(self.enableButton)
-        self.window.progressBar_2.setMinimum(0)
-        self.window.progressBar_2.setMaximum(0)
-        self.window.progressBar_2.setVisible(False)
-
+        self.widget.labelProcess.hide()
+        self.widget.labelImport.hide()
+        self.widget.buttonSelect.clicked.connect(self.importFiles)
+        self.widget.buttonImport.setEnabled(False)
+        self.widget.buttonImport.clicked.connect(self.copyFiles)
+        self.widget.inputDbName.textChanged.connect(self.enableButton)
+        self.widget.progressBar_2.setMinimum(0)
+        self.widget.progressBar_2.setMaximum(0)
+        self.widget.progressBar_2.setVisible(False)
+        self.projectPath = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
     def importFiles(self):
         self.fileName = QFileDialog().getExistingDirectory(None, '',QDir.homePath(), QFileDialog.ShowDirsOnly)
         if self.fileName:
             if (os.path.isdir(self.fileName)):
-                self.window.labelImport.setText("Carpeta seleccionada: "+self.fileName)
-                self.window.labelImport.show()
-                if self.window.inputDbName.text()!="":
-                    self.window.buttonImport.setEnabled(True)
+                self.widget.labelImport.setText("Carpeta seleccionada: "+self.fileName)
+                self.widget.labelImport.show()
+                if self.widget.inputDbName.text()!="":
+                    self.widget.buttonImport.setEnabled(True)
 
     def enableButton(self):
-        if self.window.inputDbName.text()!="":
+        if self.widget.inputDbName.text()!="":
             if not self.fileName is None:
-                self.window.buttonImport.setEnabled(True)
+                self.widget.buttonImport.setEnabled(True)
                 return
-        self.window.buttonImport.setEnabled(False)
+        self.widget.buttonImport.setEnabled(False)
 
     def makeDir(self, path):
         if not os.path.exists(path):
@@ -58,13 +57,13 @@ class AddController(Controller.Controller):
         return False
 
     def copyFiles(self):
-        self.dbName = self.window.inputDbName.text()
+        self.dbName = self.widget.inputDbName.text()
         dbPath = self.projectPath+"/Databases/"+self.dbName
         self.makeDir(dbPath)
-        self.window.progressBar_2.show()
-        self.window.progressBar_2.repaint()
-        self.window.labelProcess.setText("Copiando archivos a directorio del programa")
-        self.window.labelProcess.show()
+        self.widget.progressBar_2.show()
+        self.widget.progressBar_2.repaint()
+        self.widget.labelProcess.setText("Copiando archivos a directorio del programa")
+        self.widget.labelProcess.show()
         for bases, dirs, files in os.walk(self.fileName):
             for file in files:
                 sequenceOrigin = bases + '/' + file
@@ -72,22 +71,23 @@ class AddController(Controller.Controller):
                 sequenceDest =  pathDest + '/' + file
                 self.makeDir(pathDest)
                 if not self.isFastaFile(file,sequenceOrigin):
-                    self.window.labelProcess.setText("ERROR: El archivo "+ file+ " no posee el formato Fasta necesario")
-                    self.window.labelProcess.show()
+                    self.widget.labelProcess.setText("ERROR: El archivo "+ file+ " no posee el formato Fasta necesario")
+                    self.widget.labelProcess.show()
                     return
                 #print(sequenceOrigin+ "--> "+ sequenceDest)
                 if os.path.exists(sequenceOrigin):
                     shutil.copy2(sequenceOrigin, sequenceDest)
                     print("Archivo copiado")
-        self.window.labelProcess.setText("Configurando bases de datos en el sistema")
-        self.HS.setDb(self.dbName)
+        self.widget.labelProcess.setText("Configurando bases de datos en el sistema")
+        self.HS = HaplotypeSearcher(self.dbName)
         self.HS.setNewDb(self.dbName)
         self.HS.signals.database.connect(self.dbReady)
+        self.HS.setNewDb(self.dbName)
         self.HS.setOption("configuredb")
         self.threadPool.start(self.HS)
 
     def dbReady(self):
-        self.window.labelProcess.setText("La base de datos fue agregada correctamente")
-        self.window.progressBar_2.hide()
-        self.window.selectDatabase.addItem(self.dbName)
+        self.widget.labelProcess.setText("La base de datos fue agregada correctamente")
+        self.widget.progressBar_2.hide()
+        self.widget.selectDatabase.addItem(self.dbName)
 
