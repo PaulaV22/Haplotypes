@@ -10,7 +10,7 @@ Prueba2/
 Prueba2 - copia/
 BoLa - copia/
 Categories/
-
+Databases/
 
 #files
 prueba.fa
@@ -26,3 +26,7 @@ Muestra2.fa
 Muestra5.fa
 Muestra9.fa
 person.json
+tmp.fa
+Muestra1 - CORTADA.fa
+compareView_ui1.py
+compareView_ui1.pyc
