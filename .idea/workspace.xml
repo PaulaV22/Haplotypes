@@ -6,39 +6,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="65b7b819-51ef-4c39-a9fa-436aac9163ef" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/Controller_2/CompareController.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/js/functions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/AddController.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/Controller/AddController.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/CompareController.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/Controller/CompareController.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/Controller/Controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/DeleteController.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/Controller/DeleteController.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/EditController.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/Controller/EditController.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/Controller/Main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller_Old/AddController.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller_Old/CompareController.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller_Old/DeleteController.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller_Old/EditController.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller_Old/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/AmbiguousDbCreator.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/DbAdmin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/GlobalBlast.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/HaplotypesSearcher.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/ResultsAnalizer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/Signal.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/SimpleBlast.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/SimpleDbCreator.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/Controller/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/compareView.ui" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/compareView_ui.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/compareView_ui2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/View/ui_mainWindow.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -51,8 +21,33 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="65">
-              <caret line="55" column="53" selection-start-line="55" selection-start-column="53" selection-end-line="55" selection-end-column="53" />
+            <state relative-caret-position="201">
+              <caret line="69" column="39" selection-start-line="69" selection-start-column="39" selection-end-line="69" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="43" column="36" selection-start-line="43" selection-start-column="36" selection-end-line="43" selection-end-column="36" />
+              <folding>
+                <element signature="e#0#68#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/add.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="651">
+              <caret line="84" selection-start-line="84" selection-end-line="84" />
+              <folding>
+                <element signature="n#head#0;n#html#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -90,7 +85,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/project/Controller_2/CompareController.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="663">
+            <state relative-caret-position="481">
               <caret line="43" column="12" selection-start-line="43" selection-start-column="12" selection-end-line="43" selection-end-column="12" />
               <folding>
                 <element signature="e#1#19#0" expanded="true" />
@@ -107,27 +102,6 @@
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/project/Controller/CompareController.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2142">
-              <caret line="129" selection-start-line="129" selection-end-line="129" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/static/css/style.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="178">
-              <caret line="1406" selection-start-line="1406" selection-end-line="1406" />
             </state>
           </provider>
         </entry>
@@ -189,7 +163,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Controller/addController.py" />
         <option value="$PROJECT_DIR$/Model/SimpleDbCreator.py" />
         <option value="$PROJECT_DIR$/View/compareView_ui.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
@@ -236,10 +209,11 @@
         <option value="$PROJECT_DIR$/project/model/HaplotypesSearcher.py" />
         <option value="$PROJECT_DIR$/project/Controller_2/CompareController.py" />
         <option value="$PROJECT_DIR$/project/model/ResultsAnalizer.py" />
-        <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/static/js/functions.js" />
-        <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/static/css/style.css" />
+        <option value="$PROJECT_DIR$/templates/index.html" />
+        <option value="$PROJECT_DIR$/templates/add.html" />
+        <option value="$PROJECT_DIR$/app.py" />
       </list>
     </option>
   </component>
@@ -262,6 +236,11 @@
             </path>
             <path>
               <item name="Haplotypes" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Haplotypes" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Haplotypes" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
@@ -277,17 +256,18 @@
     <property name="settings.editor.selected.configurable" value="configurable.group.language" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Paula\PycharmProjects\Haplotypes\templates" />
+      <recent name="C:\Users\Paula\PycharmProjects\Haplotypes\project" />
+      <recent name="C:\Users\Paula\PycharmProjects\Haplotypes" />
+      <recent name="C:\Users\Paula\PycharmProjects\Haplotypes\View" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Paula\PycharmProjects\Haplotypes\project" />
       <recent name="C:\Users\Paula\PycharmProjects\Haplotypes" />
       <recent name="C:\Users\Paula\PycharmProjects\Haplotypes\project\Controller" />
       <recent name="C:\Users\Paula\PycharmProjects\Haplotypes\Controller" />
       <recent name="C:\Users\Paula\PycharmProjects\Haplotypes\Databases" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Paula\PycharmProjects\Haplotypes\project" />
-      <recent name="C:\Users\Paula\PycharmProjects\Haplotypes" />
-      <recent name="C:\Users\Paula\PycharmProjects\Haplotypes\View" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -350,7 +330,7 @@
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4920635" visible="true" weight="0.18600954" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4920635" visible="true" weight="0.18600954" />
       <window_info id="Structure" order="1" sideWeight="0.50793654" side_tool="true" weight="0.22575517" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -361,7 +341,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.4936407" weight="0.3268206" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5135135" side_tool="true" weight="0.3321492" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4864865" weight="0.24156305" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.4864865" visible="true" weight="0.24156305" />
       <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.4920509" weight="0.23623446" />
       <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.49523053" weight="0.3268206" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -473,13 +453,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://C:/Python27/Lib/ctypes/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="364" selection-start-line="364" selection-end-line="364" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/numpy/core/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="123">
@@ -740,16 +713,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/project/Controller_2/CompareController.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="43" column="12" selection-start-line="43" selection-start-column="12" selection-end-line="43" selection-end-column="12" />
-          <folding>
-            <element signature="e#1#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/project/model/HaplotypesSearcher.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="595">
@@ -760,32 +723,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/project/Controller/CompareController.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2142">
-          <caret line="129" selection-start-line="129" selection-end-line="129" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/project/model/Signal.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret selection-end-line="2" selection-end-column="27" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="21" column="12" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#68#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -807,17 +750,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/index.html">
+    <entry file="file://$PROJECT_DIR$/static/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="65">
-          <caret line="55" column="53" selection-start-line="55" selection-start-column="53" selection-end-line="55" selection-end-column="53" />
+        <state relative-caret-position="331">
+          <caret line="1406" selection-start-line="1406" selection-end-line="1406" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/style.css">
+    <entry file="file://$PROJECT_DIR$/project/Controller/CompareController.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="1406" selection-start-line="1406" selection-end-line="1406" />
+        <state relative-caret-position="481">
+          <caret line="129" selection-start-line="129" selection-end-line="129" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project/Controller_2/CompareController.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="481">
+          <caret line="43" column="12" selection-start-line="43" selection-start-column="12" selection-end-line="43" selection-end-column="12" />
+          <folding>
+            <element signature="e#1#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/add.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="651">
+          <caret line="84" selection-start-line="84" selection-end-line="84" />
+          <folding>
+            <element signature="n#head#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="69" column="39" selection-start-line="69" selection-start-column="39" selection-end-line="69" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="43" column="36" selection-start-line="43" selection-start-column="36" selection-end-line="43" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#68#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

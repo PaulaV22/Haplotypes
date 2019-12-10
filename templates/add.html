@@ -41,7 +41,7 @@
         <div class="container">
           <div class="row">
             <div class="col-8">
-              <a href="#" class=""><span class="mr-2  icon-envelope-open-o"></span> <span class="d-none d-md-inline-block">info@yourdomain.com</span></a>
+              <a href="#" class=""><span class="mr-2  icon-envelope-open-o"></span> <span class="d-none d-md-inline-block"> {{ email }}</span></a>
               <span class="mx-md-2 d-inline-block"></span>
             </div>
           </div>
@@ -63,26 +63,17 @@
                   <div class="container">
                     <div class="form-group">
                       <div class="col-6">
-                         <label>Number of results </label>
-                         <input type="number" name="numResults" id="numResults" min="1" max="50" step="1" value="10">
+                         <label>Name</label>
+                         <input name="name" id="name" required>
                       </div>
                       <div class="col-6">
-                        <label>Databaseo</label>
-                        <select id="database" name="database">
-                          {%for i in range(0, numDatabases )%}
-                            <option value="{{ databases[i] }}">{{ databases[i] }}</option>
-                          {%endfor%}
-                        </select>
+                        <label>Search folder in file system</label>
+                        <input type="file" name="file" autocomplete="off" required>
                       </div>
                     </div>
-                     <div class="form-group">
-                        <textarea name="sequence" id="sequence" class="text-area" placeholder="{{ sequenceExample }}" value="" rows="10" cols="85"></textarea>
-                     </div>
-                      <button type="submit" onclick="showLoading()" >Search</button>
+                    <button type="submit">Upload</button>
                   </div>
-                  <div class="container bordered" id="table-results" hidden="">
-
-                  </div>
+                 <label hidden="">{{ message }}</label>
                 </form>
               </div>
             </div>
@@ -91,9 +82,6 @@
         <!-- END .ftco-cover-1 -->
       </div>
 
-      <script>
-        createTable();
-      </script>
 
     <footer class="site-footer">
       <div class="container">
