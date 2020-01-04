@@ -7,6 +7,7 @@ import shutil
 import json
 from Signal import HaploSignal
 import sys
+import MailSender as Mail
 
 class HaplotypesSearcher():
 
@@ -24,6 +25,7 @@ class HaplotypesSearcher():
         self.signals = HaploSignal()
         self.option="compare"
         self.newDb=None
+        self.mailsvc = Mail.MailSender()
         #self.dbAdmin = DB.DbAdmin()
 
     def resourcePath(self,relative_path):
@@ -38,10 +40,12 @@ class HaplotypesSearcher():
     def setNewDb(self,newDb):
         self.newDb=newDb
 
-    def getResults(self,queryName,numSeqs):
-        queryPath = self.resourcePath("/" + queryName)
-        self.simpleBlast.align(queryPath, queryName)
-        results = self.resultsAnalizer.getSimilarSequences(numSeqs)
+    def getResults(self,queryName,queryPath, database, numSeqs):
+        simpleBlast = S.SimpleBlast("DbAmbigua", "salida", "salida", "fasta", "FinalResult", database, True)
+        simpleBlast.align(queryPath, queryName)
+        resultsAnalizer = RA.ResultsAnalizer("FinalResult",database, self.categories,self.categoriesPath)
+
+        results = resultsAnalizer.getSimilarSequences(queryName,numSeqs)
         return results
 
     def run(self):

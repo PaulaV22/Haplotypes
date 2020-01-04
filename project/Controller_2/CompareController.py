@@ -1,6 +1,5 @@
 
 import numpy as np
-from project.model import HaplotypesSearcher as HaplotypeSearcher
 from project.model.HaplotypesSearcher import HaplotypesSearcher
 import os
 import sys
@@ -39,14 +38,23 @@ class CompareController():
 
     def compare(self, sequence, numResults, database):
         if not self.HS:
-            self.HS = HaplotypeSearcher()
+            self.HS = HaplotypesSearcher()
         self.HS.setDb(database)
-        tempFile = self.resourcePath("/tmp.fa")
-        file = open(tempFile, "w+")
+        seqName = sequence.partition('\n')[0]
+        seqName = seqName[1:]
+        seqName = seqName.replace("\r", "")
+        seqName = seqName.replace("\n", "")
+
+        seqPath = "/Temp/"+ seqName+ ".fa"
+
+        tempFile = self.resourcePath(seqPath)
+        print(tempFile)
+        file = open(seqPath, "w+")
+
         file.write(sequence)
         file.close()
         print(numResults)
-        results = self.HS.getResults("tmp.fa",numResults)
+        results = self.HS.getResults(seqName,seqPath,database,numResults)
         return results
 
     def showResults(self, results):

@@ -45,7 +45,8 @@ class SimpleBlast:
 
 
     def align(self, query, queryName):
-        self.createFolder(self.outputPath)
+        self.alignPath = self.outputPath + "/"+queryName
+        self.createFolder(self.alignPath)
         i=0
         for bases, dirs, files in os.walk(self.dbPath):
             for file in files:
@@ -58,7 +59,7 @@ class SimpleBlast:
                     self.dbName = file[:-6]
                     # ahora tengo que armar un archivo de salida para cada una de las bases de datos
                     dbPath =  bases + '/' + fileName
-                    output =  self.outputPath+ '/'+queryName+"_"+str(i)
+                    output =  self.alignPath+ '/'+queryName+"_"+str(i)
                     #print(output + "   " + dbPath)
                     # ya se tiene la base de datos creada. Crear el comando para buscar la secuencia query en la bd y generar salida
                     print output

@@ -65,7 +65,8 @@ class ResultsAnalizer():
         output = seq2+"-"+seq1
         return output
 
-    def getSimilarSequences(self, number=None):
+    def getSimilarSequences(self, name, number=None):
+        self.resultFiles = self.resultFiles + "/"+name
         i = 0
         sequences = dict()
         #categoriesFile = self.categoriesPath+"/"+self.dbName +".json"
@@ -94,7 +95,7 @@ class ResultsAnalizer():
         n = 0
         salida = []
         for key, value in sorted(sequences.items(), key=lambda item: item[1][4], reverse=True):
-            if (n<number):
+            if (n<int(number)):
                 value.insert(0, key)
                 print(value)
                 data = {'id' :value[0], 'score':value[1], 'evalue':value[2], 'similarity':value[5]}

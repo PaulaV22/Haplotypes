@@ -4,6 +4,12 @@ function showLoading(){
     createTable();
 }
 
+function showMsg(){
+    msg = document.getElementById("msg").value;
+    if (msg!=""){
+        alert(msg);
+    }
+}
 
 function createTable(){
     var table = document.createElement("table");
@@ -27,7 +33,7 @@ function createTable(){
         table.appendChild(thead);
 
         var tbody = document.createElement("tbody");
-        for (var i = 0; i < cantResults; i++) {
+        for (var i = 0; i < results.length ; i++) {
             var item = results[i]
             tr = tbody.insertRow(-1);
             for(var j in atts){
@@ -42,5 +48,4 @@ function createTable(){
         divContainer.appendChild(table);
         divContainer.removeAttribute("hidden");
     }
-
 }

@@ -7,7 +7,6 @@ Debug(app)
 app.run(debug=True)
 cc = CC()
 
-
 #route and method to access to the index view.
 @app.route('/',  methods=['GET', 'POST'])
 def index():
@@ -28,14 +27,18 @@ def index():
         #print(sequence)
         if (len(sequence)>0):
             numResults = request.form['numResults']
-            #print(numResults)
-            results = cc.compare(sequence,numResults, database)
+            try:
+                results = cc.compare(sequence,numResults, database)
+                return render_template("index.html", results=results, num = int(numResults), databases=databases,
+                                   numDatabases=len(databases), msg="", sequence=sequence)
+            except Exception as e:
+                print e
             #print(int(numResults))
             #return render_template("index.html", results="", num = 0)
 
-            return render_template("index.html", results=results, num = int(numResults), databases=databases,
-                                   numDatabases=len(databases))
-    return render_template("index.html", results="", sequenceExample=sequenceExample , num=0, databases=databases, numDatabases=len(databases))
+
+    return render_template("index.html", results="", sequenceExample=sequenceExample , num=0, databases=databases,
+                           numDatabases=len(databases), msg="", sequence="")
 
 
 
